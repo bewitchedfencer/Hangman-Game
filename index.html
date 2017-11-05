@@ -6,15 +6,41 @@
         <!-- Allows scalability for different sized screens -->
         <meta name="viewport" content="width=device-width, initial-scale=1">        
         <!-- Link to reset css -->
-        <link rel="stylesheet" src="assets/css/reset.css">
+        <link rel="stylesheet" href="assets/css/reset.css">
+        <!-- Link to Google Fonts Cinzel -->
+        <link href="https://fonts.googleapis.com/css?family=Cinzel:400,700,900" rel="stylesheet">        
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
         <!-- Link to styles in css -->
-        <link rel="stylesheet" src="assets/css/style.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     </head>
     <body>
-
-        <script src="game.js"></script>
+        <div class="container">
+            <div class="row main-row">
+                <div class="hang-man-view text-center col-xs-6">
+                    <img id="logo" src="assets/images/Stranger_Things_logo.png" alt="Stranger Things logo">
+                
+                </div>
+                <div class="word col-xs-2">
+                    <h1>Current Word: </h1>
+                    <span class="text-design" id="currentWord">Eleven</span>
+                </div>
+                <div class="score-view col-xs-2">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h1>Score</h1>
+                            <h4>Press any key to begin.</h4>
+                            <div class="row">
+                            <p class="text-design">Wins: <span id="wins">0</span></p>
+                            <p class="text-design">Remaining Tries: <span id="remainingTries">0</span></p>
+                            <p class="text-design">Letters Tried: <span id="lettersTried"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <script src="game.js"></script> -->
     </body>
 </html>
