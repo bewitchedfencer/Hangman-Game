@@ -15,20 +15,22 @@ function wordToArray(aWord){
 }
 
 //variable storing the letters of the chosen word
-var letterArray=wordToArray(word);
-
+var letterArray= wordToArray (word);
+console.log(letterArray);
 
 //not sure why this isn't working
-for(var i=0; i<=letterArray; i++){
-    var dashArray=[];
-    dashArray.push("__")
-}
-
-//need help with this for sure
-document.getElementById("currentWord").innerHTML(dashArray.join(" "));
-
+function dashes(){ 
+    for(var i=0; i<=letterArray.length; i++){
+    document.getElementById("currentWord").innerHTML(dashArray.join(" "));
+        var dashArray=[];
+        dashArray.push("__")
+    }
+    //need help with this for sure
+    document.getElementById("currentWord").innerHTML(dashArray.join(" "));
+    }
 
 //when a key is pressed 
+function guessLetter(){
 document.onkeyup = function(event) {
     //making event.key a variable. 
     var letter=event.key;
@@ -55,8 +57,9 @@ document.onkeyup = function(event) {
       alert("Enter a letter!");
     }
   }
+}
 
-
+dashes();
 
 
 
