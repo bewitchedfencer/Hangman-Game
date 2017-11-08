@@ -2,11 +2,12 @@ var win=0;
 var tries=15;
 var triedLetters=[];
 var alphabet=["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o","p", "q","r","s","t","u","v","w","x","y","z"];
-var dashArray=[];    
+var dashArray=[];  
+var strangerThings=["eleven", "demogorgon", "hawkins", "eggos", "netflix", "madmax", "pollywog", "theupsidedown", ]  
 
 
 //add function for the randomization, return the variable word.
-var word="eleven"
+var word=strangerThings[7];
 
 
 
@@ -29,14 +30,33 @@ function replaceDash(){
 //declared function for creating dashes
 function dashes(){ 
     for(var i=0; i<letterArray.length; i++){
-        dashArray.push("__")
+        if(alphabet.indexOf(letterArray[i]>=0)){
+        dashArray.push("__");
+        }
+        // else{
+            // dashArray.push("&nbsp;");
+        // }
     }
     replaceDash();
-    // document.getElementById("currentWord").innerHTML = dashArray.join(" ");
     }
 
+    //declared function for displaying the letters pressed by user.
     function displayLetters(){
-        
+        document.getElementById("lettersTried").innerHTML = triedLetters.join(", ");
+    }
+
+    //conditions for ending the game.
+    function gameEnds(){
+        if(dashArray.indexOf("__")===-1){
+            win++;
+            //check to see if there are still words in the stranger things array
+            //the starting function for randomization should remove words used so no repeats
+            //when no words are left, the game ends.
+            //call the starting function at the end of this function. 
+            //there needs to be another if condition if they run out of letters. It should then
+            //display the word that they were trying to guess.
+        }
+
     }
 
 //when a key is pressed 
@@ -53,6 +73,8 @@ document.onkeyup = function(event) {
             //a new letter is added to the array of attempted letters.
             triedLetters.push(letter);
             displayLetters();
+            tries=tries-1;
+            document.getElementById("remainingTries").innerHTML=tries;
             //check letter input against letterArray.
             for(var j=0; j<letterArray.length; j++){
                 if(letterArray[j]===letter){
