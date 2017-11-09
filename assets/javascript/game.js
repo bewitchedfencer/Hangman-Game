@@ -4,59 +4,45 @@ var triedLetters=[];
 var alphabet=["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o","p", "q","r","s","t","u","v","w","x","y","z"];
 var dashArray=[];  
 var strangerThings=["eleven", "demogorgon", "hawkins", "eggos", "netflix", "madmax", "pollywog", "theupsidedown", ]  
-
-
-//add function for the randomization, return the variable word.
-var word=strangerThings[7];
-
+var letterArray=[];
+var word=randomWord();
 
 
 //declare function for turning string into array of characters
 function wordToArray(aWord){
-    return aWord.split("");
+    letterArray = aWord.split("");
 }
 
+//function for the randomization, return the variable word.
+function randomWord(){
+    return strangerThings[Math.floor(Math.random()*strangerThings.length)];
+    console.log(word);
+   
+ }
 
-//variable storing the letters of the chosen word
-var letterArray= wordToArray (word);
-console.log(letterArray);
-
-//function for printing out dashes and letters
-function replaceDash(){
+ //function for printing out dashes and letters
+ function replaceDash(){
     document.getElementById("currentWord").innerHTML = dashArray.join(" ");
         
     }
 
 //declared function for creating dashes
 function dashes(){ 
+    wordToArray(word);    
     for(var i=0; i<letterArray.length; i++){
         if(alphabet.indexOf(letterArray[i]>=0)){
         dashArray.push("__");
         }
-        // else{
-            // dashArray.push("&nbsp;");
-        // }
+       
     }
     replaceDash();
+    console.log(dashArray);
     }
+   
 
     //declared function for displaying the letters pressed by user.
     function displayLetters(){
         document.getElementById("lettersTried").innerHTML = triedLetters.join(", ");
-    }
-
-    //conditions for ending the game.
-    function gameEnds(){
-        if(dashArray.indexOf("__")===-1){
-            win++;
-            //check to see if there are still words in the stranger things array
-            //the starting function for randomization should remove words used so no repeats
-            //when no words are left, the game ends.
-            //call the starting function at the end of this function. 
-            //there needs to be another if condition if they run out of letters. It should then
-            //display the word that they were trying to guess.
-        }
-
     }
 
 //when a key is pressed 
@@ -82,9 +68,18 @@ document.onkeyup = function(event) {
                     //the letter will replace the equivalent spot in the dashArray.
                     dashArray[j]=letter;
                     console.log(dashArray[j]);
-                    //however I am replacing the dash with the letter. 
+                    if(dashArray.toString()==letterArray.toString()){
+                        win++;
+                        document.getElementById("wins").innerHTML=win;
+                        
+                        restart();
+                    }
                 }
             replaceDash();
+            if(tries===0){
+                document.getElementById("currentWord").innerHTML = word;                            
+                restart();
+            }
             } 
         }     
        else{
@@ -97,8 +92,26 @@ document.onkeyup = function(event) {
   }
 }
 
+function restart(){
+    tries=15;
+    document.getElementById("remainingTries").innerHTML=tries;
+    triedLetters=[];
+    dashArray=[];
+    dashes();
+    guessLetter();    
+    
+}
+
+//calling my functions
+randomWord();
+console.log(letterArray);
 dashes();
 guessLetter();
+
+
+
+
+
 
 
 
