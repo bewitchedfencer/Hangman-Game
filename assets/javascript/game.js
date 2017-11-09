@@ -97,6 +97,7 @@ function restart(){
     document.getElementById("remainingTries").innerHTML=tries;
     triedLetters=[];
     dashArray=[];
+    randomWord();
     dashes();
     guessLetter();    
     
