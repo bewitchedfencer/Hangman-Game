@@ -2,10 +2,10 @@ var win=0;
 var tries=15;
 var triedLetters=[];
 var alphabet=["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o","p", "q","r","s","t","u","v","w","x","y","z"];
-var dashArray=[];  
 var strangerThings=["eleven", "demogorgon", "hawkins", "eggos", "netflix", "madmax", "pollywog", "theupsidedown", ]  
 var letterArray=[];
 var word=randomWord();
+var dashArray=[];
 
 
 //declare function for turning string into array of characters
@@ -22,7 +22,9 @@ function randomWord(){
 
  //function for printing out dashes and letters
  function replaceDash(){
-    document.getElementById("currentWord").innerHTML = dashArray.join(" ");
+     if(dashArray){
+        document.getElementById("currentWord").innerHTML = dashArray.join(" ");        
+     }
         
     }
 
@@ -30,14 +32,11 @@ function randomWord(){
 function dashes(){ 
     wordToArray(word);    
     for(var i=0; i<letterArray.length; i++){
-        if(alphabet.indexOf(letterArray[i]>=0)){
         dashArray.push("__");
-        }
-       
     }
     replaceDash();
     console.log(dashArray);
-    }
+}
    
 
     //declared function for displaying the letters pressed by user.
@@ -68,16 +67,15 @@ document.onkeyup = function(event) {
                     //the letter will replace the equivalent spot in the dashArray.
                     dashArray[j]=letter;
                     console.log(dashArray[j]);
+                }
                     if(dashArray.toString()==letterArray.toString()){
                         win++;
                         document.getElementById("wins").innerHTML=win;
-                        
                         restart();
                     }
-                }
             replaceDash();
             if(tries===0){
-                document.getElementById("currentWord").innerHTML = word;                            
+                document.getElementById("currentWord").innerHTML = word;       
                 restart();
             }
             } 
@@ -93,21 +91,28 @@ document.onkeyup = function(event) {
 }
 
 function restart(){
+    triedLetters=[];    
     tries=15;
     document.getElementById("remainingTries").innerHTML=tries;
-    triedLetters=[];
-    dashArray=[];
-    randomWord();
+    console.log(dashArray);
+    word=randomWord(); 
+    console.log(word);                  
+    console.log(dashArray); 
+    dashArray=[]; 
     dashes();
+    console.log(dashArray);
+    console.log(dashArray);
     guessLetter();    
     
 }
 
 //calling my functions
 randomWord();
-console.log(letterArray);
+console.log(word);
 dashes();
+console.log(word);
 guessLetter();
+console.log(word);
 
 
 
