@@ -16,9 +16,9 @@ function wordToArray(aWord){
 //function for the randomization, return the variable word.
 function randomWord(){
     return strangerThings[Math.floor(Math.random()*strangerThings.length)];
-    console.log(word);
    
  }
+ 
 
  //function for printing out dashes and letters
  function replaceDash(){
@@ -100,7 +100,6 @@ function restart(){
     console.log(dashArray); 
     dashArray=[]; 
     dashes();
-    console.log(dashArray);
     console.log(dashArray);
     guessLetter();    
     
