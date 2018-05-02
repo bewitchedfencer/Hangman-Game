@@ -66,4 +66,12 @@ p{
     margin-top:30px;
 }
 
+.thumbnail{
+    height:250px;
+    width:250px;
+}
+
+#imagesForWords{
+    visibility: hidden;    
+}
 
