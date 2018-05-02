@@ -1,22 +1,23 @@
+//number of wins
 var win=0;
+//number of tries available
 var tries=15;
+//an array of the tried letters
 var triedLetters=[];
+//an array of the alphabet for data validation
 var alphabet=["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o","p", "q","r","s","t","u","v","w","x","y","z"];
-var strangerThings=["eleven", "demogorgon", "hawkins", "eggos", "netflix", "madmax", "pollywog", "theupsidedown", ]  
+//an array of the possible answers
+var strangerThings=["eleven", "demogorgon", "hawkins", "eggos", "netflix", "madmax", "pollywog", "theupsidedown" ];
+//an array of the letters in the solution
 var letterArray=[];
-var word=randomWord();
+//the chosen word
+var word='';
+//an array for the number of dashes to guess the word
 var dashArray=[];
-
-
-//declare function for turning string into array of characters
-function wordToArray(aWord){
-    letterArray = aWord.split("");
-}
 
 //function for the randomization, return the variable word.
 function randomWord(){
     return strangerThings[Math.floor(Math.random()*strangerThings.length)];
-   
  }
  
 
@@ -29,8 +30,8 @@ function randomWord(){
     }
 
 //declared function for creating dashes
-function dashes(){ 
-    wordToArray(word);    
+function dashes(word){ 
+    letterArray=word.split("");   
     for(var i=0; i<letterArray.length; i++){
         dashArray.push("__");
     }
@@ -49,6 +50,7 @@ function guessLetter(){
 document.onkeyup = function(event) {
     //making event.key a variable. 
     var letter=event.key;
+    console.log(event);
     //making sure the letter is lowercase for comparison
     letter.toLowerCase();
     //the key is checked to see if it is part of the alphabet.
@@ -66,7 +68,7 @@ document.onkeyup = function(event) {
                     //when a letter matches a certain letter in the letterArray
                     //the letter will replace the equivalent spot in the dashArray.
                     dashArray[j]=letter;
-                    console.log(dashArray[j]);
+                    // console.log(dashArray[j]); for debugging
                 }
                     if(dashArray.toString()==letterArray.toString()){
                         win++;
@@ -91,24 +93,19 @@ document.onkeyup = function(event) {
 }
 
 function restart(){
+    word=randomWord(); 
+    dashArray=[]; 
+    dashes(word);    
     triedLetters=[];    
     tries=15;
     document.getElementById("remainingTries").innerHTML=tries;
-    console.log(dashArray);
-    word=randomWord(); 
-    console.log(word);                  
-    console.log(dashArray); 
-    dashArray=[]; 
-    dashes();
-    console.log(dashArray);
+    document.getElementById("lettersTried").innerHTML=triedLetters;
     guessLetter();    
-    
 }
 
 //calling my functions
-randomWord();
-console.log(word);
-dashes();
+word = randomWord();
+dashes(word);
 console.log(word);
 guessLetter();
 console.log(word);
