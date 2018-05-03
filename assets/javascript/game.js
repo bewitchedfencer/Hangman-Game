@@ -81,10 +81,15 @@ var indexNum = -1;
 var myTheme;
 var randomObject;
 
+function music(){
+    myTheme = new Sound('assets/audio/themeMusic.mp3');
+    myTheme.play();
+}
 
 //function for the randomization, return the variable word.
 function randomWord(){
     randomObject = strangerThings[Math.floor(Math.random()*strangerThings.length)];
+    console.log(randomObject.word);
     if(randomObject.used === false){
         randomObject.used=true;
         return randomObject.word;
@@ -105,8 +110,6 @@ function randomWord(){
 
 //declared function for creating dashes
 function dashes(word){ 
-    myTheme = new Sound('assets/audio/themeMusic.mp3');
-    myTheme.play();
     letterArray=word.split("");  
     //finding the index number of the word in the original array
     //fix the removal of the words from the list. Or add an element to the object that is a boolean and changes
@@ -178,17 +181,15 @@ document.onkeyup = function(event) {
                         document.getElementById("imagesForWords").setAttribute("src", randomObject.image);
                         document.getElementById("imagesForWords").style.visibility = "visible";
                         document.getElementById("currentWord").innerHTML=word;
-                         //removes the chosen word from the array of choices
                         console.log(strangerThings);
-                        //removing the word that was guessed correctly
-                        strangerThings.splice(indexNum, 1);
                         myTheme.stop();
                         restart();
                     }
             //losing condition
             replaceDash();
             if(tries===0){
-                document.getElementById("currentWord").innerHTML = word;   
+                document.getElementById("currentWord").innerHTML = word;
+                randomObject.used=false;
                 myTheme.stop();    
                 restart();
             }
@@ -206,6 +207,7 @@ document.onkeyup = function(event) {
 //for when the game is restarted after a word has been guessed.
 function restart(){
     word=randomWord(); 
+    console.log(word);
     dashArray=[]; 
     dashes(word);    
     triedLetters=[];    
@@ -216,11 +218,11 @@ function restart(){
 }
 
 //calling my functions
+music();
 word = randomWord();
+console.log(word);
 dashes(word);
-console.log(word);
 guessLetter();
-console.log(word);
 
 
 
