@@ -7,52 +7,67 @@ var triedLetters=[];
 //an array of the alphabet for data validation
 var alphabet=["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o","p", "q","r","s","t","u","v","w","x","y","z"];
 //an array of the possible answers
+//I have used an array of objects instead of using a constructor with two arrays because 
+//I use constructors to build a node.js version of hangman
+//which can be found on my github, bewitchedfencer
 var strangerThings=[
     {
         word:"eleven",
-        image:'assets/images/eleven.png'
+        image:'assets/images/eleven.png',
+        used:false
     }, 
     {
         word:"demogorgon", 
-        image:'assets/images/demogorgon.jpeg'
+        image:'assets/images/demogorgon.jpeg',
+        used:false
     },
     {
         word:"hawkins", 
-        image:'assets/images/hawkins.png'
+        image:'assets/images/hawkins.png',
+        used:false
     },
     {
         word:"eggos", 
-        image:'assets/images/eggos.jpg'
+        image:'assets/images/eggos.jpg',
+        used:false
     },
     {
         word:"netflix",
-        image:'assets/images/netflix.jpg'
+        image:'assets/images/netflix.jpg',
+        used:false
     }, 
     {
         word:"madmax",
-        image:'assets/images/madmax.png'
+        image:'assets/images/madmax.png',
+        used:false
     },
     {
         word:"pollywog",
-        image:'assets/images/dart.jpg'
+        image:'assets/images/dart.jpg',
+        used:false
     },
     {
         word:"the upside down",
-        image:'assets/images/theupsidedownThumb.jpg'
+        image:'assets/images/theupsidedownThumb.jpg',
+        used:false
     },
     {
         word:"will",
-        image:'assets/images/willByers.jpg'
+        image:'assets/images/willByers.jpg',
+        used:false
     },
     {   word:"dart",
-        image:'assets/images/dart.jpg'
+        image:'assets/images/dart.jpg',
+        used:false
     },
     {
         word:"dustin",
-        image:'assets/images/dustin.jpg'
+        image:'assets/images/dustin.jpg',
+        used:false
     },
     {   word:"mike",
-        image:'assets/images/mikeWheeler.jpg'
+        image:'assets/images/mikeWheeler.jpg',
+        used:false
     }];
 //an array of the letters in the solution
 var letterArray=[];
