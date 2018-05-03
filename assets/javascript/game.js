@@ -86,7 +86,8 @@ var randomObject;
 function randomWord(){
     randomObject = strangerThings[Math.floor(Math.random()*strangerThings.length)];
     if(randomObject.used === false){
-    return randomObject.word;
+        randomObject.used=true;
+        return randomObject.word;
     }
     else{
         randomWord();
