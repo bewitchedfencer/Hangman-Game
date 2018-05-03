@@ -84,10 +84,13 @@ var randomObject;
 
 //function for the randomization, return the variable word.
 function randomWord(){
-    myTheme = new Sound('assets/audio/themeMusic.mp3');
-    myTheme.play();
     randomObject = strangerThings[Math.floor(Math.random()*strangerThings.length)];
+    if(randomObject.used === false){
     return randomObject.word;
+    }
+    else{
+        randomWord();
+    }
  }
  
 
@@ -101,6 +104,8 @@ function randomWord(){
 
 //declared function for creating dashes
 function dashes(word){ 
+    myTheme = new Sound('assets/audio/themeMusic.mp3');
+    myTheme.play();
     letterArray=word.split("");  
     //finding the index number of the word in the original array
     //fix the removal of the words from the list. Or add an element to the object that is a boolean and changes
