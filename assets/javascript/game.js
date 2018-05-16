@@ -1,5 +1,9 @@
 //number of wins
 var win = 0;
+//number of losses
+var lose = 0;
+//total of both wins and losses
+var total = win + lose;
 //number of tries available
 var tries = 15;
 //an array of the tried letters
@@ -90,15 +94,14 @@ function music() {
 function randomWord() {
     randomObject = strangerThings[Math.floor(Math.random() * strangerThings.length)];
     console.log(randomObject.word);
-    if(randomObject.used === false){
+    if (randomObject.used === false) {
         randomObject.used = true;
         console.log('not used', randomObject.word);
         //why is this word not being returned
         console.log(randomObject);
         console.log(randomObject.word);
-        word=randomObject.word;
-    } 
-    else{
+        word = randomObject.word;
+    } else {
         console.log('already used', randomObject.word);
         randomWord();
     }
@@ -186,14 +189,25 @@ function guessLetter() {
                         document.getElementById("currentWord").innerHTML = word;
                         console.log(strangerThings);
                         myTheme.stop();
+                        if (total === strangerThings.length) {
+                            alert("You've run out of words to play!")
+                        } 
+                        else {
                         restart();
+                        }
                     }
                     //losing condition
                     replaceDash();
-                    if(tries === 0) {
+                    if (tries === 0) {
+                        lose++;
                         document.getElementById("currentWord").innerHTML = word;
                         myTheme.stop();
-                        restart();
+                        if (total === strangerThings.length) {
+                            alert("You've run out of words to play!")
+                        } 
+                        else {
+                            restart();
+                        }
                     }
                 }
             } else {
