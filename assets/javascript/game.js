@@ -77,8 +77,6 @@ var letterArray = [];
 var word = '';
 //an array for the number of dashes to guess the word
 var dashArray = [];
-//index number of the chosen word in the strangerThings array
-var indexNum = -1;
 //background music
 var myTheme;
 var randomObject;
@@ -97,7 +95,8 @@ function randomWord() {
         console.log('not used', randomObject.word);
         //why is this word not being returned
         console.log(randomObject);
-        return randomObject.word;
+        console.log(randomObject.word);
+        word=randomObject.word;
     } 
     else{
         console.log('already used', randomObject.word);
@@ -120,7 +119,6 @@ function dashes(word) {
     //finding the index number of the word in the original array
     //fix the removal of the words from the list. Or add an element to the object that is a boolean and changes
     //when the word is reset
-    indexNum = strangerThings.indexOf(word);
     for (var i = 0; i < letterArray.length; i++) {
         if (letterArray[i] === " ") {
             dashArray.push(" ");
@@ -208,7 +206,7 @@ function guessLetter() {
 }
 //for when the game is restarted after a word has been guessed.
 function restart() {
-    word = randomWord();
+    randomWord();
     console.log(word);
     dashArray = [];
     dashes(word);
@@ -221,7 +219,7 @@ function restart() {
 
 //calling my functions
 music();
-word = randomWord();
+randomWord();
 console.log(word);
 dashes(word);
 guessLetter();
