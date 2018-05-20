@@ -18,11 +18,11 @@ Visit the application at this [link](https://bewitchedfencer.github.io/Hangman-G
 
 ***
 
-Visual Studio Code
+[Visual Studio Code](https://code.visualstudio.com/?wt.mc_id=adw-brand&gclid=Cj0KCQjwlv_XBRDrARIsAH-iRJRdivCbU05fcgum4McikFquLOaFtJTqHkA9MYhaalhg7UxVpE1WXxQaAun8EALw_wcB)
 
-JavaScript
+[JavaScript](https://www.javascript.com/resources)
 
-Bootstrap
+[Bootstrap version 3.3.7](https://getbootstrap.com/docs/3.3/getting-started/)
 
 ***
 
